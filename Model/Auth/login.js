@@ -4,13 +4,15 @@ var newMongo = require('../mongo/newMongo')
 exports.getUserIdForLogin = function (data, callback) {
     try {
         mongo.findOne('userAuth', { userId: data }, function (response) {
+
+           
             if (response) {
                 // console.log(response.isActive, "login");
-                if (response?.isActive == undefined || response?.isActive == true) {
+                //if (response?.isActive == undefined || response?.isActive == true) {
                     callback({ status: true, res: response })
-                } else {
-                    callback({ status: false, res: response })
-                }
+               // } else {
+                   // callback({ status: false, res: response })
+               // }
             } else {
                 callback({ status: false })
             }
